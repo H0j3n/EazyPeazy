@@ -11,6 +11,8 @@ Usually the tools that I always use are hashcat, wfuzz, hydra and metasploit.
 - [Mysql](#mysql)
 - [Postgresql](#postgresql)
 - [HTTP](#http)
+- [Hashcat](#hashcat)
+- [John](#john)
 - [References](#references)
 
 ### SSH
@@ -154,6 +156,7 @@ hydra -f -l user -P /opt/rockyou.txt 10.10.8.83 http-post-form "/api/login:usern
 hydra -f -L user.txt -P /opt/rockyou.txt 10.10.8.83 http-post-form "/api/login:username=^USER^&password=^PASS^&Login=Login:Incorrect Credentials" -t 50
 
 => Wfuzz
+
 # Basic Authentication
 wfuzz -u http://10.10.8.83 -H "Authorization : Basic FUZZ" -w userpass.txt --h459
 
@@ -163,6 +166,31 @@ wfuzz -w user.txt -w pass.txt --basic FUZZ:FUZ2Z http://10.10.8.83
 
 ### Hashcat
 
+Please check the mode in the link below:
+
+https://hashcat.net/wiki/doku.php?id=example_hashes
+
+```
+hashcat -m 160 crack.txt /opt/rockyou.txt
+
+hashcat -m 160 crack.txt /opt/rockyou.txt --force
+```
+
+### John
+
+Usually the john is already inside Kali VM. You can locate it in /usr/share/john/.
+
+```
+# Find List of John 
+locate john | grep /usr/share/john/ | grep 2 | grep -v "ztex" | grep -v "rules"
+
+# Convert to John (Example)
+python /usr/share/john/ssh2john.py id_rsa > hash.txt
+
+# To crack
+john --wordlist=/opt/rockyou.txt hash.txt
+```
+
 # References
 
 [1] https://linuxconfig.org/ssh-password-testing-with-hydra-on-kali-linux
@@ -170,3 +198,5 @@ wfuzz -w user.txt -w pass.txt --basic FUZZ:FUZ2Z http://10.10.8.83
 [2] https://redteamtutorials.com/2018/10/25/hydra-brute-force-techniques/
 
 [3] https://medium.com/better-programming/can-we-automate-earning-bug-bounties-with-wfuzz-c4e7a96810a5
+
+[4] https://hashcat.net
