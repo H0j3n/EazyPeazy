@@ -1,10 +1,12 @@
+# Portforwarding Techniques
+
 - [SSH](#ssh)
 - [Socat](#socat)
 - [Chisel](#chisel)
 - [Ngrok](#ngrok)
 - [References](#references)
 
-## SSH 
+### SSH 
 
 **Local PortForward** 
 
@@ -18,7 +20,7 @@ ssh –L 5901:10.10.10.48:4492 root@10.10.10.47
 ssh –R 9999:localhost:8080 root@10.10.10.48
 ```
 
-## Socat 
+### Socat 
 
 Make sure the machine have socat and if dont please get on that machine a socat binary.
 
@@ -27,7 +29,7 @@ Make sure the machine have socat and if dont please get on that machine a socat 
 ```
 
 
-## Chisel 
+### Chisel 
 
 Please make sure both are the same version. Please download the latest release of Chisel on the link below:
 
@@ -41,7 +43,7 @@ https://github.com/jpillora/chisel/releases
 chisel64.exe client 10.10.14.8:4442 R:8200:127.0.0.1:8888
 ```
 
-## Ngrok 
+### Ngrok 
 
 **Ngrok** - a cross-platform application that enables developers to expose a local development server to the Internet with minimal effort
 
@@ -69,6 +71,8 @@ chisel64.exe client 10.10.14.8:4442 R:8200:127.0.0.1:8888
 # References 
 [1] https://phoenixnap.com/kb/ssh-port-forwarding#htoc-remote-port-forwarding-with-openssh
 
-[2] https://github.com/jpillora/chisel
+[2] https://www.cyberciti.biz/faq/linux-unix-tcp-port-forwarding/
 
-[3] https://ngrok.com/
+[3] https://github.com/jpillora/chisel
+
+[4] https://ngrok.com/
