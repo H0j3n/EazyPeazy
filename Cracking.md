@@ -200,3 +200,5 @@ john --wordlist=/opt/rockyou.txt hash.txt
 [3] https://medium.com/better-programming/can-we-automate-earning-bug-bounties-with-wfuzz-c4e7a96810a5
 
 [4] https://hashcat.net
+
+[5] http://pentestmonkey.net/cheat-sheet/john-the-ripper-hash-formats
