@@ -1,4 +1,6 @@
-## SSH
+- [Socat](#socat)
+
+## SSH {#ssh}
 
 **Local PortForward** 
 
@@ -12,7 +14,7 @@ ssh –L 5901:10.10.10.48:4492 root@10.10.10.47
 ssh –R 9999:localhost:8080 root@10.10.10.48
 ```
 
-## Socat
+## Socat {#socat}
 
 Make sure the machine have socat and if dont please get on that machine a socat binary.
 
@@ -21,7 +23,7 @@ Make sure the machine have socat and if dont please get on that machine a socat 
 ```
 
 
-## Chisel
+## Chisel {#chisel}
 
 Please make sure both are the same version. Please download the latest release of Chisel on the link below:
 
@@ -31,9 +33,10 @@ https://github.com/jpillora/chisel/releases
 
 ```
 
-## Ngrok
+## Ngrok {#ngrok}
 
 
-# References
+# References {#references}
 [1] https://phoenixnap.com/kb/ssh-port-forwarding#htoc-remote-port-forwarding-with-openssh
+
 [2] https://github.com/jpillora/chisel
