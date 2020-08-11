@@ -3,7 +3,6 @@
 - [Dirsearch](#dirsearch)
 - [Gobuster](#gobuster)
 - [Wfuzz](#wfuzz)
-- 
 - [References](#references)
 
 ### Dirsearch
