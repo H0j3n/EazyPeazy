@@ -9,7 +9,7 @@ The reason I make this script after encounter with DC5 Machine in Vulnhub haha. 
 Enjoy!
 
 
-Screenshots of ParamLFI:
+## Screenshot :
 
 ![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/ParamLFI/img/screenshot1.png)
 
