@@ -189,6 +189,9 @@ python /usr/share/john/ssh2john.py id_rsa > hash.txt
 
 # To crack
 john --wordlist=/opt/rockyou.txt hash.txt
+
+john hash.txt --format=RAW-MD5 --wordlist=/opt/word/rockyou.txt
+
 ```
 
 # References
