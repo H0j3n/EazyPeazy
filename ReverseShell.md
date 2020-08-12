@@ -1,6 +1,6 @@
 # Reverse Shell
 
-- [How To?](#how-to?)
+- [How To?](#how-to)
 - [Netcat](#netcat)
 - [Bash](#bash)
 - [Python](#python)
