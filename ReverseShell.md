@@ -8,7 +8,7 @@
 - [Ruby](#ruby)
 - [PHP](#php)
 
-### How to?
+# How to?
 
 All the reverse shell you found below is use on your target. Also, on your machine please make sure to listen like below:
 
@@ -115,3 +115,6 @@ while(cmd=c.gets)
     }
 end
 ```
+
+### PHP
+
