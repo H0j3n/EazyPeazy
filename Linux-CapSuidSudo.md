@@ -4,9 +4,9 @@
 
 # SUID
 
-- [Screen4.50](#screen4-50)
+- [Screen4.50](#screen450)
 
-### Screen4-50
+### Screen4.50
 
 All of these file do it on your machine first then transfer the file to your targets.
 
