@@ -1,0 +1,10 @@
+{
+    "Cracking" : ["https://raw.githubusercontent.com/H0j3n/EazyPeazy/master/Cracking.md"],
+    "Portforwarding" : ["https://raw.githubusercontent.com/H0j3n/EazyPeazy/master/Portforwarding.md"],
+    "ReverseShell" : ["https://raw.githubusercontent.com/H0j3n/EazyPeazy/master/ReverseShell.md"],
+    "Web-Fuzzing" : ["https://raw.githubusercontent.com/H0j3n/EazyPeazy/master/Web-Fuzzing.md"],
+    "Wordlist" : ["https://raw.githubusercontent.com/H0j3n/EazyPeazy/master/Wordlist.md"],
+    "Linux-CapSuidSudo" : ["https://raw.githubusercontent.com/H0j3n/EazyPeazy/master/Linux-CapSuidSudo.md"],
+    "Linux-Enumeration" : ["https://raw.githubusercontent.com/H0j3n/EazyPeazy/master/Linux-Enumeration.md"],
+    "Windows-Enumeration" : ["https://raw.githubusercontent.com/H0j3n/EazyPeazy/master/Windows-Enumeration.md"]
+}
