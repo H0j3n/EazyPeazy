@@ -8,7 +8,7 @@
 
 ### Screen-4.50
 
-All of these file do it on your machine first then transfer the file to the targets.
+All of these file do it on your machine first then transfer the file to your targets.
 
 Save the file in libhax.c. Then compile like the command below:
 ```
@@ -46,7 +46,7 @@ int main(void){
 }
 ```
 
-Save the file in # screenroot.sh like below:
+Save the file in screenroot.sh like below:
 ```
 #!/bin/bash
 # screenroot.sh
