@@ -7,4 +7,4 @@
 
 
 ### Training
-[1] [TryHackMe-OSCP_Buffer_Overflow_Prep](https://tryhackme.com/room/oscpbufferoverflowprep)
+[1] [TryHackMe-OSCP_Buffer_Overflow_Prep](https://tryhackme.com/room/bufferoverflowprep)
