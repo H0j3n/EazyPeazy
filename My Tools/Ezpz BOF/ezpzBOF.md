@@ -4,7 +4,7 @@
 
 I love to make my own things and maybe there are much more better script than mine. But I will update my tools along with my journey. Every new wordlist or new parameters that I found will update in here :)
 
-The reason I make this script after encounter with DC5 Machine in Vulnhub haha. Hope this could help anyone on their journey of learning.
+The reason I make this script after encounter with room BufferOverflow in TryHackme haha. Hope this could help anyone on their journey of learning.
 
 Enjoy!
 
