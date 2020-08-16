@@ -34,7 +34,7 @@ if __name__ == "__main__":
 	print header();
 	if len(sys.argv) != 2:
 		print formatHelp("(+) Usage:\t python %s <WEBAPP_URL>" % sys.argv[0])
-		print formatHelp("(+) Example:\t python %s 'http://10.10.10.10/thankyou'" % sys.argv[0])
+		print formatHelp("(+) Example:\t python %s 'http://10.10.10.10/thankyou.php'" % sys.argv[0])
 		sys.exit(-1)
 	SERVER_URL = sys.argv[1]
 	if ("http" in SERVER_URL) or ("https" in SERVER_URL):
