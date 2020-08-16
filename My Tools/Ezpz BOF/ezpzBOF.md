@@ -13,7 +13,7 @@ Enjoy!
 
 ### Fuzzer
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/fuzzer.png)
+![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/fuzzer.PNG)
 
 ### Bad Character
 
