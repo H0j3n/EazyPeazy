@@ -1,6 +1,6 @@
 # ezpzBOF by H0j3n
 
-![ParamLFI Logo](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BO/img/logo.png)
+![ParamLFI Logo](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/logo.PNG)
 
 I love to make my own things and maybe there are much more better script than mine. But I will update my tools along with my journey. Every new wordlist or new parameters that I found will update in here :)
 
@@ -29,12 +29,12 @@ Enjoy!
 
 ### Pattern Create
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/pcreate.png)
+![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/pcreate.PNG)
 
 ### Pattern Offset
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/poffset.png)
+![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/poffset.PNG)
 
 ### MSFVenom Payload
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/payload.png)
+![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/payload.PNG)
