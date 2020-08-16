@@ -13,28 +13,28 @@ Enjoy!
 
 ### Fuzzer
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/ezpzBOF/img/fuzzer.png)
+![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/fuzzer.png)
 
 ### Bad Character
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/ezpzBOF/img/badchar.png)
+![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/badchar.png)
 
 ### Exploit
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/ezpzBOF/img/exploit.png)
+![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/exploit.png)
 
 ### Checker
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/ezpzBOF/img/checker.png)
+![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/checker.png)
 
 ### Pattern Create
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/ezpzBOF/img/pcreate.png)
+![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/pcreate.png)
 
 ### Pattern Offset
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/ezpzBOF/img/poffset.png)
+![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/poffset.png)
 
 ### MSFVenom Payload
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/ezpzBOF/img/payload.png)
+![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/payload.png)
