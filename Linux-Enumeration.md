@@ -38,5 +38,10 @@ grep -r / -A1 -ie 'flag{' 2>/dev/null
 
 ### Linpeas
 
+[Linpeas](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS)
+
+
 ### Linux Smart Enumeration
+
+[Linux Smart Enumeration](https://github.com/diego-treitos/linux-smart-enumeration)
 
