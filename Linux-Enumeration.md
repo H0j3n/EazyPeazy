@@ -3,7 +3,7 @@
 - [Manual Enumeration](#manual-enumeration)
 - [Automatic Enumeration](#automatic-enumeration)
 
-### Manual Enumeration
+## Manual Enumeration
 
 ```
 # Suid Binary
@@ -34,9 +34,9 @@ crontab -e
 grep -r / -A1 -ie 'flag{' 2>/dev/null
 ```
 
-### Automatic Enumeration
+## Automatic Enumeration
 
-## Linpeas
+### Linpeas
 
-## Linux Smart Enumeration
+### Linux Smart Enumeration
 
