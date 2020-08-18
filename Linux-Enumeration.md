@@ -5,6 +5,7 @@
 
 ## Manual Enumeration
 
+### Commands
 ```
 # Suid Binary
 find / -perm -u=s -type f 2>/dev/null
@@ -32,6 +33,16 @@ crontab -e
 
 # Grep Certain Words in all files
 grep -r / -A1 -ie 'flag{' 2>/dev/null
+
+```
+
+### Sensitive Files
+
+```
+[+] /etc/sudoers.d/<user>
+    => If can read try enumerate more using this files and recheck sudo commands.
+
+
 ```
 
 ## Automatic Enumeration
