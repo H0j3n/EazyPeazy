@@ -4,7 +4,14 @@
 
 # SUID
 
+- [Bash](#bash)
 - [Screen4.50](#screen450)
+
+### Bash
+
+```
+bash -p
+```
 
 ### Screen4.50
 
