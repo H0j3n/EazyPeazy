@@ -28,15 +28,19 @@
 /etc/shadow
 /etc/passwd
 /etc/sudoers.d/root
-/var/log/apache2/error.log
-/var/log/apache2/access.log
 /etc/php/apache2/php.ini
 /etc/nginx/sites-enabled/default.conf
 /etc/ningx/nginx.conf
 /etc/httpd/conf/httpd.conf
 /etc/httpd/php.ini
+/var/log/auth
+/var/log/apache2/error.log
+/var/log/apache2/access.log
 /var/www/logs/access_log
-/proc/self/fd/<number loop 0-100>
 /var/www/logs/error_log
 /var/lib/php5/sess_<your session>
+/proc/self/fd/<number loop 0-100>
 ```
+
+# References
+

