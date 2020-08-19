@@ -1,6 +1,6 @@
 # ezpzBOF by H0j3n
 
-![ezpzShell Logo](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/logo.PNG)
+![ezpzShell Logo](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20Shell/img/logo.PNG)
 
 I love to make my own things and maybe there are much more better script than mine. But I will update my tools along with my journey. Every new wordlist or new parameters that I found will update in here :)
 
@@ -13,4 +13,4 @@ Enjoy!
 
 ### Reverse Shell
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/fuzzer.png)
+![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20Shell/img/screenshot1.PNG)
