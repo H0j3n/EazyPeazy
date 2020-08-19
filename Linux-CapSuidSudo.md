@@ -1,6 +1,6 @@
 # Linux - CapSuidSudo
 
-All of this is for unique suid, sudo or capabilities. You can check the references below for more good site for this :)
+All of this is for unique suid, sudo or capabilities. Any common one please check GTFOBins!. You can check the references below for more good site for this :)
 
 - [Capabilities](#capabilities)
 - [Suid](#suid)
