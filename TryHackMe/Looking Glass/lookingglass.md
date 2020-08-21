@@ -1,6 +1,6 @@
 # Script for room in Looking Glass
 
-![Script Logo](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20Shell/img/logo.PNG)
+![Script Logo](https://github.com/H0j3n/EazyPeazy/blob/master/TryHackMe/Looking%20Glass/img/logo.PNG)
 
 I love to make my own things and maybe there are much more better script than mine. But I will update my tools along with my journey.
 
