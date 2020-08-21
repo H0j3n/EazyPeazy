@@ -7,3 +7,9 @@ I love to make my own things and maybe there are much more better script than mi
 The reason I make this script because I want to make it more easier for me to get the port in this room. Hope this could help anyone on their journey of learning.
 
 Enjoy!
+
+# How To Use ?
+
+```
+./script.sh 10.10.10.10
+```
