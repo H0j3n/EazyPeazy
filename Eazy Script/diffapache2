@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#----------------------------------------
+# HOW TO USE?
+# Just checkip http://10.10.10.10
+# To check difference between original and the one we want to check
+#----------------------------------------
+
+diff <(curl -s $1) <(curl -s https://gist.githubusercontent.com/gmm96/6593f5d2621be637aac5df82f93ff099/raw/01f6b1aebef0f897054078b866f608d5b5c5e909/Apache2%2520Ubuntu%2520Default%2520Page)

@@ -1,0 +1,43 @@
+#!/bin/bash
+
+#----------------------------------------
+# HOW TO USE?
+# checkip 10.10.10.10.
+# or just checkip 
+# try & error and you will understand the use of this script :)
+#----------------------------------------
+
+if ifconfig tun0 > /dev/null 2>&1;then
+        IP2=$(ifconfig tun0 | grep "inet " | cut -d " " -f 10)
+        IP=$(ifconfig eth0 | grep "inet " | cut -d " " -f 10)
+        if [[ $1 == "" ]] #Where "$1" is the positional argument you want to validate
+        then
+		cat /tmp/ip.txt
+                cat /tmp/ip.txt | tr -d '\n' | cut -d":" -f4 | tr -d '\n' | xclip -selection c
+                exit 0
+
+        fi      
+        echo 'My Ori IP:' > /tmp/ip.txt
+        echo $IP >> /tmp/ip.txt
+        echo 'My VPN IP:' >> /tmp/ip.txt
+        echo $IP2 >> /tmp/ip.txt
+        echo 'Target IP:' >> /tmp/ip.txt
+        echo $1 >> /tmp/ip.txt
+	cat /tmp/ip.txt
+        cat /tmp/ip.txt | tr -d '\n' | cut -d":" -f4 | tr -d '\n' | xclip -selection c
+else
+        IP=$(ifconfig eth0 | grep "inet " | cut -d " " -f 10)
+        if [[ $1 == "" ]] #Where "$1" is the positional argument you want to validate
+        then
+		cat /tmp/ip.txt
+                cat /tmp/ip.txt | tr -d '\n' | cut -d":" -f3 | tr -d '\n' | xclip -selection c
+                exit 0
+
+        fi
+        echo 'My Ori IP:' > /tmp/ip.txt
+        echo $IP >> /tmp/ip.txt
+        echo 'Target IP:' >> /tmp/ip.txt
+        echo $1 >> /tmp/ip.txt
+	cat /tmp/ip.txt
+        cat /tmp/ip.txt  | tr -d '\n' | cut -d":" -f3 | tr -d '\n' | xclip -selection c
+fi

