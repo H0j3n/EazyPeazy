@@ -29,6 +29,10 @@ Coming soon!
 
 ## Videos Using
 
-[1] [OSCP BufferOverflow Prep](https://www.twitch.tv/videos/742376606)
+[1] [OSCP BufferOverflow Prep - oscp.exe](https://www.twitch.tv/videos/742376606)
 
-[2] [BRAINPAN]()
+[2] [BRAINPAN - brainpan.exe](https://www.twitch.tv/videos/742422044)
+
+[3] [VULNSERVER - vulnserver.exe](https://www.twitch.tv/videos/742464908)
+
+[4] [DOSTACKBUFFEROVERFLOWGOOD - dostackbufferoverflowgood.exe](https://www.twitch.tv/videos/742512326)
