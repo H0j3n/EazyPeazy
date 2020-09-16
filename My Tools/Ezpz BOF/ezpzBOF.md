@@ -1,4 +1,4 @@
-# ezpzBOF by H0j3n
+# ezpzBOF v2.0 by H0j3n
 
 ![ParamLFI Logo](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/logo.PNG)
 
