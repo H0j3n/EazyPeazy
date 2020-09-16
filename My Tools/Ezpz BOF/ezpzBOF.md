@@ -8,33 +8,21 @@ The reason I make this script after encounter with room BufferOverflow in TryHac
 
 Enjoy!
 
+## Mona Setup & Configuration
 
-## Screenshot :
+```
+# Step 1 
+Copy mona.py into C:\Program Files (x86)\Immunity Inc\Immunity Debugger\PyCommands\mona.py
 
-### Fuzzer
+# Step 2
+!mona config -set workingfolder c:\mona\%p
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/fuzzer.png)
+# Step 3
+!mona bytearray -cpb \x00
+```
 
-### Bad Character
+## Screenshots
 
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/badchar.png)
-
-### Exploit
-
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/exploit.png)
-
-### Checker
-
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/checker.png)
-
-### Pattern Create
-
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/pcreate.PNG)
-
-### Pattern Offset
-
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/poffset.PNG)
-
-### MSFVenom Payload
-
-![Screenshot 1](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/Ezpz%20BOF/img/payload.PNG)
+```
+Coming soon!
+```
