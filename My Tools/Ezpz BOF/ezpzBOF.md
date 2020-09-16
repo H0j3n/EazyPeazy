@@ -29,6 +29,6 @@ Coming soon!
 
 ## Videos Using
 
-[1] https://www.twitch.tv/videos/742376606
+[1] [OSCP BufferOverflow Prep](https://www.twitch.tv/videos/742376606)
 
-[2] 
+[2] [BRAINPAN]()
