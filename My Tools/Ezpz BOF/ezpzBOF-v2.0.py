@@ -50,16 +50,19 @@ VARIABLE = "PAYLOAD"	# Default = "PAYLOAD"
 #----------------------------------
 
 #-----Just Play with this Variable for Manual BOF----
-IP = "192.168.0.156"
-PORT = 1337
-PREFIX = "OVERFLOW2 "
+IP = ""
+PORT = 9999
+PREFIX = ""
 ENTERS = r"\r\n"
 OFFSET = 0
 OVERFLOW = "A" * OFFSET
 RETN = ""
 PADDING = "\x90" * 0
 POSTFIX = ""
-PAYLOAD =  ""
+PAYLOAD = ""
+
+
+
 #----------------------------------------------------
 
 # Color Function
@@ -444,7 +447,7 @@ if __name__ == "__main__":
 	OPTIONS = sys.argv[1]
 	
 	if OPTIONS == "fuzzer":
-		RESULT = fuzzer_option(IP,PORT,PREFIX,ENTERS)
+		RESULT = fuzzer_option(IP,PORT,PREFIX,ENTERS,POSTFIX)
 	elif OPTIONS == "pcreate":
 		RESULT = pcreate()
 	elif OPTIONS == "poffset":
