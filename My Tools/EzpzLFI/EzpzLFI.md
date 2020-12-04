@@ -41,7 +41,7 @@ Example : --cookies PHPSESSID=123456789
 
 ### RCE
 
-![img/rce.png]()
+![rce](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/EzpzLFI/img/rce.png?raw=true)
 
 ### PARAM
 
