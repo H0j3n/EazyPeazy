@@ -1,6 +1,6 @@
 # EzpzLFI by H0j3n
 
-![img/1.png]()
+![https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/EzpzLFI/img/1.png?raw=true](https://github.com/H0j3n/EazyPeazy/blob/master/My%20Tools/EzpzLFI/img/1.png?raw=true)
 
 ```
 [Available Type]
